@@ -46,9 +46,81 @@ def heapifyTreeInsert(root_node, index, heapType):
         return
     if heapType == "Min":
         if root_node.customList[index] < root_node.customList[parentIndex]:
+            temp = root_node.customList[index]
             root_node.customList[index] = root_node.customList[parentIndex]
+            root_node.customList[parentIndex] = temp
 
 
+    elif heapType == "Max":
+        if root_node.customList[index] > root_node.customList[parentIndex]:
+            temp = root_node.customList[index]
+            root_node.customList[index] = root_node.customList[parentIndex]
+            root_node.customList[parentIndex] = temp
+
+        heapifyTreeInsert(root_node, parentIndex, heapType)
+
+# Function to insert a Node in the Binary Heap
+def insertNode(root_node, nodeValue, heapType):
+    if root_node.heapSize + 1 == root_node.maxSize:
+        return " The Binary Heap is fully occupied"
+    root_node.customList[root_node.heapSize + 1] = nodeValue
+    root_node.heapSize +=1
+    heapifyTreeInsert(root_node,root_node.heapSize, heapType)
+    return "The node was inserted successfully "
+
+## Initializing a Binary Heap
+newHeap = BHeap(10)
+insertNode(newHeap, 70, 'Max')
+insertNode(newHeap, 40, "Max")
+insertNode(newHeap, 30, "Max")
+insertNode(newHeap, 60, "Max")
+insertNode(newHeap, 80, "Max")
+insertNode(newHeap, 20, "Max")
+insertNode(newHeap, 5, "Max")
+insertNode(newHeap, 50, "Max")
+insertNode(newHeap, 10, "Max")
+levelOrderTraversal(newHeap)
+
+
+
+# Function to heapify the binary Heap while Extraction
+
+def heapifyTreeExtract(root_node, index, heapType):
+    leftIndex = index * 2
+    rightIndex  = index*2 + 1
+    swapchild = 0
+
+    if root_node.heapSize < leftIndex:
+        return
+    elif root_node.heapSize == leftIndex:
+        if heapType == " Min":
+            if root_node.customlist[index] > root_node.customlist[leftIndex]:
+                temp = root_node.customlis[index]
+                root_node.customlist[index] = swapchild
+
+
+
+
+
+
+# Function to extarct a Node from Binary Heap
+def extractNode(root_node, heapType):
+    if root_node.heapSize == 0:
+        return " The Binary Tree is empty"
+    else:
+        extractedNode = root_node.customList[1]
+        root_node.customlist[1] = root_node.customlist[root_node.heapSize]
+        root_node.customlist[root_node.heapSize] = None
+        root_node.heapSize -= 1
+        heapifyTreeExtract(root_node, 1, heapType)
+        return extractedNode
+
+
+# Clearing of Entire Binary Heap
+# simply set Basic list to None
+def deleteEntireBP(root_node):
+    root_node.customlist = None
+    print("The Binary Heap has Been Successfully Deleted")
 
 
 
