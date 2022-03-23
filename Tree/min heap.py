@@ -87,17 +87,46 @@ levelOrderTraversal(newHeap)
 
 def heapifyTreeExtract(root_node, index, heapType):
     leftIndex = index * 2
-    rightIndex  = index*2 + 1
-    swapchild = 0
+    rightIndex = index * 2 + 1
+    swapChild = 0
 
     if root_node.heapSize < leftIndex:
         return
     elif root_node.heapSize == leftIndex:
-        if heapType == " Min":
-            if root_node.customlist[index] > root_node.customlist[leftIndex]:
-                temp = root_node.customlis[index]
-                root_node.customlist[index] = swapchild
-                  # more code to write
+        if heapType == "Min":
+            if root_node.customList[index] > root_node.customList[leftIndex]:
+                temp = root_node.customList[index]
+                root_node.customList[index] = root_node.customList[leftIndex]
+                root_node.customList[leftIndex] = temp
+            return
+        else:
+            if root_node.customList[index] < root_node.customList[leftIndex]:
+                temp = root_node.customList[index]
+                root_node.customList[index] = root_node.customList[leftIndex]
+                root_node.customList[leftIndex] = temp
+            return
+
+    else:
+        if heapType == "Min":
+            if root_node.customList[leftIndex] < root_node.customList[rightIndex]:
+                swapChild = leftIndex
+            else:
+                swapChild = rightIndex
+            if root_node.customList[index] > root_node.customList[swapChild]:
+                temp = root_node.customList[index]
+                root_node.customList[index] = root_node.customList[swapChild]
+                root_node.customList[swapChild] = temp
+        else:
+            if root_node.customList[leftIndex] > root_node.customList[rightIndex]:
+                swapChild = leftIndex
+            else:
+                swapChild = rightIndex
+            if root_node.customList[index] < root_node.customList[swapChild]:
+                temp = root_node.customList[index]
+                root_node.customList[index] = root_node.customList[swapChild]
+                root_node.customList[swapChild] = temp
+    heapifyTreeExtract(root_node, swapChild, heapType)
+
 
 
 
