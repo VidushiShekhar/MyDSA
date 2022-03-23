@@ -97,6 +97,7 @@ def heapifyTreeExtract(root_node, index, heapType):
             if root_node.customlist[index] > root_node.customlist[leftIndex]:
                 temp = root_node.customlis[index]
                 root_node.customlist[index] = swapchild
+                  # more code to write
 
 
 
