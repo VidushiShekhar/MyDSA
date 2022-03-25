@@ -27,3 +27,9 @@ print("The popped item using heappushpop() is:", end=" ")
 print(heapq.heappushpop(li, 2))
 print('The popped element using heapreplace is: ', end=" ")
 print(heapq.heapreplace(li1, 2))
+
+print("The 3 largest numbers in the list are:", end=" ")
+print(heapq.nlargest(3, li1))
+
+print("The 3 smallest numbers in list are: ", end=' ')
+print(heapq.nsmallest(3, li1))
