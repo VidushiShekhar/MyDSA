@@ -43,8 +43,9 @@ def main():
     g.add_edge(1, 4)
     g.print_matrix()
 
-if __name__ =="__main__":
-     main()
+
+if __name__ == "__main__":
+    main()
 
 
 
