@@ -69,3 +69,5 @@ v = zigZagTraversal(root)
 
 for i in range(len(v)):
     print(v[i], end=" ")
+# l = 2
+# v = [1, 3, 2, 7, 6, 5, 4]
