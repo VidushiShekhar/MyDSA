@@ -5,33 +5,36 @@ class newNode:
         self.right = None
 
 def printSpiral(root):
+
     if root == None:
         return
     # stacks to store alternate level
-    s1 = []# from right to left
+    s1 = [] # from right to left
 
-    s2 = []# from left to right
+    s2 = [] # from left to right
 
     s1.append(root)
+
     while not len(s1) == 0 or not len(s2) == 0:
+
         while not len(s1) == 0:
             temp = s1[-1]
             s1.pop()
             print(temp.data, end=' ')
 
-        if temp.right:
-            s2.append(temp.right)
-        if temp.left:
-             s2.append(temp.left)
+            if temp.right:
+                s2.append(temp.right)
+            if temp.left:
+                s2.append(temp.left)
 
-    while not len(s2) == 0:
-           temp = s2[-1]
-           s2.pop()
-           print(temp.data, end=" ")
+        while not len(s2) == 0:
+            temp = s2[-1]
+            s2.pop()
+            print(temp.data, end=" ")
 
-           if temp.left:
-               s1.append(temp.left)
-           if temp.right:
+            if temp.left:
+                s1.append(temp.left)
+            if temp.right:
                s1.append(temp.right)
 
 
