@@ -21,9 +21,8 @@ def printPostOrder(In, pre, n):
 
     if root != n-1:
         printPostOrder(In[root+1:n], pre[root+1:n], n-root-1)
-
-
     print(pre[0], end=" ")
+
 
 # Driver code
 In = [4, 2, 5, 1, 3, 6]
