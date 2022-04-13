@@ -11,6 +11,7 @@ class Node:
 # Returns True if a and b
 # are cousins otherwise False
 def isCousin(root, a, b):
+
     if root == None:
         return False
     # To store parent of node a
@@ -24,6 +25,7 @@ def isCousin(root, a, b):
     # Dummy node to act like
     # parent of root node
     tmp = Node(-1)
+    
     q.append((root, tmp))
 
     while len(q) > 0:
@@ -36,12 +38,12 @@ def isCousin(root, a, b):
             #check if current node is
             #node a and node b or not
 
-            if ele[0].data == b.data:
-                parB = ele[1]
-
-            # push children of currnt node
             if ele[0].data == a.data:
                 parA = ele[1]
+
+            # push children of currnt node
+            if ele[0].data == b.data:
+                parB = ele[1]
 
             # push children of current node into the queue
             if ele[0].left:
@@ -52,16 +54,13 @@ def isCousin(root, a, b):
             if parA and parB:
                 break
 
-            if parA and parB:
-                return parA != parB
+        if parA and parB:
+            return parA != parB
 
-            if (parA and parB):
-                return parA != parB
+        if (parA and not parB) or (parB and not parA):
+            return False
 
-
-            if (parA and not parB) or (parB and not parA):
-                return False
-        return False
+    return False
 
 
 
